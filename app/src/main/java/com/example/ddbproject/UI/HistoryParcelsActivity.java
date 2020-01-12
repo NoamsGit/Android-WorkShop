@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ddbproject.Entities.Parcel;
@@ -26,7 +29,12 @@ public class HistoryParcelsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<Parcel> parcelList;
+    private List<String> parcelStringList;
     private HistoryViewModel historyViewModel;
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+    private TextView tv4;
 
 
     @Override
@@ -34,8 +42,15 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_parcels);
 
+        tv1 = (TextView) findViewById(R.id.tv1);
+        tv2 = (TextView) findViewById(R.id.tv2);
+        tv3 = (TextView) findViewById(R.id.tv3);
+        tv4 = (TextView) findViewById(R.id.tv4);
+
+
         Log.d(TAG, "111111111aaa");
         parcelList = new ArrayList<>();
+        parcelStringList = new ArrayList<>();
 
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         Log.d(TAG, "2222222222aaa");
@@ -45,8 +60,20 @@ public class HistoryParcelsActivity extends AppCompatActivity {
                 Log.d(TAG, "3333333333aaa");
                 parcelList.clear();
                 Log.d(TAG, "444444444aaa");
+
+                tv1.setText(parcels.get(0).getName().toString());
+                tv2.setText(parcels.get(0).getAddress().toString());
+                tv3.setText(parcels.get(1).getName().toString());
+                tv4.setText(parcels.get(1).getAddress().toString());
+
+
                 parcelList = parcels;
                 Log.d(TAG, "55555555aaa");
+                //ListView parcelsList=(ListView) findViewById(R.id.ParcelsList);
+                ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(getApplication(), R.layout.row_item, (ArrayList<String>) parcelStringList);
+               // parcelsList.setAdapter(itemArrayAdapter);
+
+
             }
         });
 
