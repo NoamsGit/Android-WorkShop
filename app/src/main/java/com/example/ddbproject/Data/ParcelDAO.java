@@ -22,4 +22,7 @@ public interface ParcelDAO {
 
     @Query("SELECT * FROM Parcels WHERE id = :id")
     Parcel getParcelById(String id);
+
+    @Query("Delete From Parcels")
+    void deleteAllNotes();
 }

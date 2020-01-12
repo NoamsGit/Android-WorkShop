@@ -85,15 +85,18 @@ public class ParcelDataSource {
     private static ChildEventListener parcelRefChildEventListener;
     ///// from here ///////////////////////////////////////////////////
     public static void notifyToParcelList(final NotifyDataChange<Parcel> notifyDataChange) {
-        Log.d(TAG, "aaaaaa");
 
+        Log.d(TAG, "--- ParcelDataSource notifyToParcelList 01 ---");
             parcelRefChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                     Parcel parcel = dataSnapshot.getValue(Parcel.class);
+                    Log.d(TAG, "--- ParcelDataSource onChildAdded 01 ---");
+
                     //String key = dataSnapshot.getKey();
                     //parcel.setId(key);
                     notifyDataChange.OnDataChanged(parcel);
+                    Log.d(TAG, "--- ParcelDataSource onChildAdded 022 ---");
                 }
 
                 @Override

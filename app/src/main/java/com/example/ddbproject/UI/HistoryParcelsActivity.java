@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.ddbproject.Entities.Parcel;
 import com.example.ddbproject.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryParcelsActivity extends AppCompatActivity {
@@ -27,24 +28,33 @@ public class HistoryParcelsActivity extends AppCompatActivity {
     private List<Parcel> parcelList;
     private HistoryViewModel historyViewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_parcels);
 
         Log.d(TAG, "111111111aaa");
+        parcelList = new ArrayList<>();
 
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
         Log.d(TAG, "2222222222aaa");
         historyViewModel.getParcelList().observe(this, new Observer<List<Parcel>>() {
             @Override
             public void onChanged(List<Parcel> parcels) {
+                Log.d(TAG, "3333333333aaa");
                 parcelList.clear();
+                Log.d(TAG, "444444444aaa");
                 parcelList = parcels;
+                Log.d(TAG, "55555555aaa");
             }
         });
 
-        Log.d(TAG, "333333333aaa");
+        Log.d(TAG, "666666666aaa");
+
+
+
+
       /*  recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,6 +62,13 @@ public class HistoryParcelsActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onDestroy() {
+
+       // historyViewModel.stopNotifyToParceltList();
+        super.onDestroy();
+    }
+
 
 
  /*   public class ParcelsRecyclerViewAdapter extends RecyclerView.Adapter<ParcelsRecyclerViewAdapter.ParcelViewHolder>{
