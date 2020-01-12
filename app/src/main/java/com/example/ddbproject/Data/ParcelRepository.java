@@ -64,6 +64,10 @@ public class ParcelRepository {
         return parcelChange;
     }
 
+    public  MutableLiveData<List<Parcel>> getParcelList() {
+        return parcelList;
+    }
+
     public  void addParcel(final Parcel parcel) {
         parcelDataSourse.addParcel(parcel);
     }

@@ -5,20 +5,15 @@
     android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonAdd"
-        android:text="Add">
-    </Button>
+        android:id="@+id/test"
+    >
+    </TextView>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonList"
-        android:text="List">
-    </Button>
+
+
 
 
 </LinearLayout>
