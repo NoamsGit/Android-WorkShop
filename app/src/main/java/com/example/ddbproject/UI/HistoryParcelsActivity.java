@@ -42,51 +42,33 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_parcels);
 
-        tv1 = (TextView) findViewById(R.id.tv1);
-        tv2 = (TextView) findViewById(R.id.tv2);
-        tv3 = (TextView) findViewById(R.id.tv3);
-        tv4 = (TextView) findViewById(R.id.tv4);
+        RecyclerView recyclerView = findViewById(R.id.recycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        Log.d(TAG, "111111111aaa");
-        parcelList = new ArrayList<>();
-        parcelStringList = new ArrayList<>();
+        parcelList = new ArrayList<Parcel>();
 
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
-        Log.d(TAG, "2222222222aaa");
         historyViewModel.getParcelList().observe(this, new Observer<List<Parcel>>() {
             @Override
             public void onChanged(List<Parcel> parcels) {
-                Log.d(TAG, "3333333333aaa");
                 parcelList.clear();
-                Log.d(TAG, "444444444aaa");
-
-                tv1.setText(parcels.get(0).getName().toString());
-                tv2.setText(parcels.get(0).getAddress().toString());
-                tv3.setText(parcels.get(1).getName().toString());
-                tv4.setText(parcels.get(1).getAddress().toString());
-
-
-                parcelList = parcels;
-                Log.d(TAG, "55555555aaa");
-                //ListView parcelsList=(ListView) findViewById(R.id.ParcelsList);
-                ItemArrayAdapter itemArrayAdapter = new ItemArrayAdapter(getApplication(), R.layout.row_item, (ArrayList<String>) parcelStringList);
-               // parcelsList.setAdapter(itemArrayAdapter);
+                Log.d(TAG, "-----------------------------");
+                Log.d(TAG, "Was cleared");
+                Log.d(TAG, "-----------------------------");
+                for (int i = 0; i < parcels.size(); i++) {
+                    parcelList.add(parcels.get(i));
+                }
+                Log.d(TAG, "-----------------------------");
 
 
             }
         });
 
+        final ParcelAdapter parcelAdapter = new ParcelAdapter(parcelList);
+
+        recyclerView.setAdapter(parcelAdapter);
         Log.d(TAG, "666666666aaa");
-
-
-
-
-      /*  recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);*/
-
 
     }
     @Override
@@ -97,41 +79,6 @@ public class HistoryParcelsActivity extends AppCompatActivity {
     }
 
 
-
- /*   public class ParcelsRecyclerViewAdapter extends RecyclerView.Adapter<ParcelsRecyclerViewAdapter.ParcelViewHolder>{
-
-        @NonNull
-        @Override
-        public ParcelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(getBaseContext()).inflate(R.layout.recyclerview_row, parent, false);
-            return new ParcelViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull ParcelViewHolder holder, int position) {
-            holder.nameTextView.setText(parcelList.get(position).getName());
-        }
-
-        @Override
-        public int getItemCount() {
-            return parcelList.size();
-        }
-        ///
-        private class ParcelViewHolder extends RecyclerView.ViewHolder {
-            public TextView nameTextView;
-
-
-            public ParcelViewHolder(@NonNull View itemView) {
-                super(itemView);
-
-                nameTextView = itemView.findViewById(R.id.nameTextView);
-
-
-            }
-        }
-        ////
-
-    }*/
 
 
 }

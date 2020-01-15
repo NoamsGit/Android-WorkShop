@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.ddbproject.Entities.Parcel;
 
-@Database(entities = {Parcel.class}, version = 1)
+@Database(entities = {Parcel.class}, version = 1,exportSchema = false)
 public abstract class HistoryDataSource extends RoomDatabase {
     private static HistoryDataSource instance = null;
     public abstract ParcelDAO parcelDAO();

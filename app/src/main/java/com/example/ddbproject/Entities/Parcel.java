@@ -2,6 +2,7 @@ package com.example.ddbproject.Entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Parcels")
@@ -11,7 +12,7 @@ public class Parcel {
     private String id;
     private String name;
     private String address;
-
+    @Ignore
     public Parcel() {
     }
     public Parcel(String id, String name, String address) {

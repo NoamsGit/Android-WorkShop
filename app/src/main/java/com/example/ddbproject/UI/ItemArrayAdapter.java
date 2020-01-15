@@ -31,7 +31,7 @@ public class ItemArrayAdapter extends ArrayAdapter<String> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(listItemLayout, parent, false);
-            viewHolder.item = (TextView) convertView.findViewById(R.id.row_item);
+            //viewHolder.item = (TextView) convertView.findViewById(R.id.row_item);
             convertView.setTag(viewHolder); // view lookup cache stored in tag
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
